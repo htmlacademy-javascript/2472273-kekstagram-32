@@ -4,12 +4,11 @@ function stringLength (string, maxLength) {
     return true;
   }
 
-    return false;
+  return false;
 }
 
-console.log(stringLength('проверяемая строка', 20));
-console.log(stringLength('проверяемая строка', 18));
-console.log(stringLength('проверяемая строка', 10));
+stringLength('проверяемая строка', 20);
+stringLength('проверяемая строка', 18);
 
 
 // Функция для проверки, является ли строка палиндромом
@@ -22,12 +21,11 @@ function isPalindrom(string) {
   }
 
   if (stringNew === stringNormal) {
-    return true
+    return true;
   }
 
-  return false
+  return false;
 }
 
-console.log(isPalindrom('топот'));
-console.log(isPalindrom('ДовОд'));
-console.log(isPalindrom('Кекс'));
+isPalindrom('топот');
+isPalindrom('ДовОд');
