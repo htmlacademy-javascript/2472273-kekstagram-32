@@ -1,6 +1,6 @@
 // Функция для проверки длины строки
 function stringLength (string, maxLength) {
-  if (string === 'string' && Number.isInteger(maxLength)) {
+  if (string.length <= maxLength) {
     return true;
   }
 
@@ -14,13 +14,13 @@ stringLength('проверяемая строка', 18);
 // Функция для проверки, является ли строка палиндромом
 function isPalindrom(string) {
   const stringNormal = string.replaceAll(' ', '').toLowerCase();
-  let stringNew = '';
+  let revertString = '';
 
   for (let i = stringNormal.length - 1; i >= 0; i--) {
-    stringNew += stringNormal[i];
+    revertString += stringNormal[i];
   }
 
-  if (stringNew === stringNormal) {
+  if (revertString === stringNormal) {
     return true;
   }
 
