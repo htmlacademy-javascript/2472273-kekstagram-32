@@ -45,6 +45,6 @@ const descriptionOfTheObject = () => ({
 
 // функция, создающая массив из объектов, которые описывают фотографии
 // eslint-disable-next-line no-unused-vars
-const getObjects = Array.from({length: NUMBER_OF_DESCRIPTIONS}, descriptionOfTheObject);
+const getObjects = () => Array.from({length: NUMBER_OF_DESCRIPTIONS}, descriptionOfTheObject);
 
 export {getObjects};

@@ -1,4 +1,4 @@
-import {getObjects} from './dataCreateObjects/dataCreateObjects';
+import {renderUserPosts} from './createPicture';
 
 // eslint-disable-next-line
-console.log(getObjects);
+console.log(renderUserPosts(document.querySelector('.pictures')));
