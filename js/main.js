@@ -1,4 +1,6 @@
-import {renderUserPosts} from './createPicture';
+import {createUserPosts} from './createPicture/createPicture.js';
 
 // eslint-disable-next-line
-console.log(renderUserPosts(document.querySelector('.pictures')));
+createUserPosts();
+
+
