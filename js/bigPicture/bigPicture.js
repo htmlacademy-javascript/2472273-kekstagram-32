@@ -19,7 +19,7 @@ let commentsData = [];
 let commentsShown = 0;
 const SHOWN_COMMENTS = 5;
 
-// функция для генерации комментария в большой фотографии
+// функция для генерации комментария
 
 const getCommentForBigPicture = ({avatar, name, message}) => {
   const socialCommentElement = socialComment.cloneNode(true);
@@ -63,7 +63,7 @@ const renderComments = () => {
 const onCommentsLoaderClick = () => renderComments();
 socialCommentsLoader.addEventListener('click', onCommentsLoaderClick);
 
-//Открытие поста на весь экран
+//Открытие фотографии на весь экран
 
 const showBigPicture = () => {
   body.classList.add('modal-open');
