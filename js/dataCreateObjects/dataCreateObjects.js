@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomArrayElement} from './utils';
+import {getRandomInteger, getRandomArrayElement} from '../utils';
 import {NUMBER_OF_DESCRIPTIONS, MIN_ID_OBJECT, MAX_ID_OBJECT, MIN_LIKES, MAX_LIKES, MIN_COMMENTS, MAX_COMMENTS, MIN_NUMBER_AVATAR, MAX_NUMBER_AVATAR, MIN_ID_COMMENT, MAX_ID_COMMENT, PHOTOS_NUMBER, TEXT_COMMENT, PHOTO_DESCRIPTION, NAME} from './variables';
 
 // функция для поиска случайного уникального идентификатора
@@ -33,6 +33,7 @@ const getComment = () => ({
   message: getRandomArrayElement(TEXT_COMMENT),
   name: getRandomArrayElement(NAME),
 });
+
 
 // Функция, генерирующая объекты массива - описание фотографии
 const descriptionOfTheObject = () => ({
