@@ -8,6 +8,6 @@ const getRandomInteger = (min, max) => {
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 //Функция для закрытия окна через кнопку 'Escape'
-const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEscapeKey = (e) => e.key === 'Escape';
 
 export {getRandomInteger, getRandomArrayElement, isEscapeKey};
