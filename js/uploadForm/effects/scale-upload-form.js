@@ -1,4 +1,4 @@
-import {imagePreviewElement} from './uploadForm';
+import {imagePreviewElement} from '../upload-form.js';
 
 const scaleImg = {
   MIN: 25,
@@ -25,7 +25,7 @@ const onScaleClickBigger = () => {
   scalePicture(Math.min(parseInt(scaleValue.value, 10) + scaleImg.STEP, scaleImg.MAX));
 };
 
-//Функция для сброса до первоначальных(дефолтных) данных
+//Функция для сброса до первоначальных данных
 const resetScale = () => scalePicture(scaleImg.DEFAULT);
 
 export {resetScale, onScaleClickSmaller, onScaleClickBigger};
