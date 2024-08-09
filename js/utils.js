@@ -1,3 +1,7 @@
+const ALERT_SHOW_TIME = 5000;
+const errorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
+
+// Функция для нахождения случайного числа
 const getRandomInteger = (min, max) => {
   const lower = Math.ceil(Math.min(min, max));
   const upper = Math.floor(Math.max(min, max));
@@ -7,7 +11,27 @@ const getRandomInteger = (min, max) => {
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-//Функция для закрытия окна через кнопку 'Escape'
-const isEscapeKey = (e) => e.key === 'Escape';
+//Функция для закрытия окна через кнопку esc
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomInteger, getRandomArrayElement, isEscapeKey};
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+// Cообщения о ошибке
+const showAlert = () => {
+  const errorElement = errorTemplate.cloneNode(true);
+  document.body.append(errorElement);
+
+  setTimeout(() => {
+    errorElement.remove();
+  }, ALERT_SHOW_TIME);
+};
+
+
+export {getRandomInteger, getRandomArrayElement, isEscapeKey, debounce, showAlert};

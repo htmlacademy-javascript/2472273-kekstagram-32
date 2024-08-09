@@ -15,12 +15,11 @@ const socialCommenShownCount = bigPicture.querySelector('.social__comment-shown-
 const SOCIAL_PICTURE_WIDTH = 35;
 const SOCIAL_PICTURE_HEIGHT = 35;
 
+const SHOWN_COMMENTS = 5;
 let commentsData = [];
 let commentsShown = 0;
-const SHOWN_COMMENTS = 5;
 
 // функция для генерации комментария
-
 const getCommentForBigPicture = ({avatar, name, message}) => {
   const socialCommentElement = socialComment.cloneNode(true);
   socialCommentElement.querySelector('.social__picture').src = avatar;
@@ -64,7 +63,6 @@ const onCommentsLoaderClick = () => renderComments();
 socialCommentsLoader.addEventListener('click', onCommentsLoaderClick);
 
 //Открытие фотографии на весь экран
-
 const showBigPicture = () => {
   body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
@@ -76,19 +74,20 @@ const hideBigPicture = () => {
   commentsShown = 0;
 };
 
-const handlerEscape = (e) => {
-  if(isEscapeKey(e)) {
+const onDocumentKeydown = (evt) => {
+  if(isEscapeKey(evt)) {
+    evt.preventDefault();
     closeBigPicture();
   }
 };
 
 const removeEvents = () => {
-  document.removeEventListener('keydown', handlerEscape);
+  document.removeEventListener('keydown', onDocumentKeydown);
   bigPictureCancel.removeEventListener('click', closeBigPicture);
 };
 
 const registerCloseEvents = () => {
-  document.addEventListener('keydown', handlerEscape);
+  document.addEventListener('keydown', onDocumentKeydown);
   bigPictureCancel.addEventListener('click', closeBigPicture);
 };
 

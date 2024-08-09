@@ -1,4 +1,4 @@
-import {imagePreviewElement} from './uploadForm';
+import {imagePreviewElement} from '../upload-form.js';
 
 const uploadElement = document.querySelector('.img-upload');
 const effectsOfElement = uploadElement.querySelector('.effects');
@@ -15,7 +15,7 @@ const effectsToImg = {
   HEAT: 'heat',
 };
 
-const effectFilter = {
+const effectsFilter = {
   [effectsToImg.CHROME]: {
     style: 'grayscale',
     unit: '',
@@ -38,7 +38,7 @@ const effectFilter = {
   },
 };
 
-const effectSlider = {
+const effectsSlider = {
   [effectsToImg.DEFAULT]: {
     min: 0,
     max: 100,
@@ -83,7 +83,7 @@ const setImageStyle = () => {
   }
 
   const { value } = effectLevelElement;
-  const { style, unit } = effectFilter[selectedEffect];
+  const { style, unit } = effectsFilter[selectedEffect];
   imagePreviewElement.style.filter = `${style}(${value}${unit})`;
 };
 
@@ -135,7 +135,7 @@ const setSlider = () => {
   if(isDefault()) {
     hideSlider();
   } else {
-    updateSlider(effectSlider[selectedEffect]);
+    updateSlider(effectsSlider[selectedEffect]);
     showSlider();
   }
 };
@@ -147,18 +147,21 @@ const setEffect = (effect) => {
   setImageStyle();
 };
 
-const onEffectsChange = (e) => {
-  setEffect(e.target.value);
+const onEffectsChange = (evt) => {
+  setEffect(evt.target.value);
 };
 
 //Сброс эффектов
 const resetEffects = () => {
+  if(sliderElement.noUiSlider) {
+    sliderElement.noUiSlider.destroy();
+  }
   setEffect(effectsToImg.DEFAULT);
 };
 
 //Инициализация настроек слайдера
 const initEffectPicture = () => {
-  createSlider(effectSlider[selectedEffect]);
+  createSlider(effectsSlider[selectedEffect]);
   effectsOfElement.addEventListener('change', onEffectsChange);
 };
 
