@@ -2,7 +2,7 @@ const uploadForm = document.querySelector('.img-upload__form');
 const textHashtags = document.querySelector('.text__hashtags');
 const commentDescription = document.querySelector('.text__description');
 
-//данные для валидации
+//Данные для валидации
 const VALID_HASHTAG = /^#[A-ZА-ЯЁa-zа-яё0-9]{1,19}$/;
 const MAX_HASHTAGS = 5;
 const MAX_COMMENTS_LENGTH = 140;
@@ -20,7 +20,7 @@ const pristine = new Pristine(uploadForm, {
   errorTextClass: 'img-upload__field-wrapper--error'
 });
 
-// валидация хэштега
+// Валидация хэштега
 const normalizeString = (value) => {
   const hashtags = value.toLowerCase().trim().split(' ').filter((hashtagsString) => Boolean(hashtagsString.length));
   return hashtags;
