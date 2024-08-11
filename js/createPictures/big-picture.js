@@ -4,7 +4,7 @@ const body = document.querySelector('body');
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureCancel = bigPicture.querySelector('.big-picture__cancel');
 
-// создание комментариев
+// Создание комментариев
 const socialComments = document.querySelector('.social__comments');
 const socialComment = socialComments.querySelector('.social__comment');
 const socialItemCommentCount = bigPicture.querySelector('.social__comment-count');
@@ -19,7 +19,7 @@ const SHOWN_COMMENTS = 5;
 let commentsData = [];
 let commentsShown = 0;
 
-// функция для генерации комментария
+// Функция для генерации комментария
 const getCommentForBigPicture = ({avatar, name, message}) => {
   const socialCommentElement = socialComment.cloneNode(true);
   socialCommentElement.querySelector('.social__picture').src = avatar;

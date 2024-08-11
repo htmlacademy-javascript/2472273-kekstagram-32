@@ -3,7 +3,7 @@ import {isEscapeKey} from '../utils';
 const errorMessageUpload = document.querySelector('#error').content.querySelector('.error');
 const successMessageUpload = document.querySelector('#success').content.querySelector('.success');
 
-// функция для закрытия сообщения при нажатии esc
+// Функция для закрытия сообщения при нажатии esc
 const onDocumentKeydown = (evt) => {
   if(isEscapeKey(evt)) {
     evt.preventDefault();
@@ -11,14 +11,14 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-// закрытие сообщение по клику на странице
+// Закрытие сообщение по клику на странице
 const onDocumentClick = (evt) => {
   if (!(evt.target.closest('.success__inner') || evt.target.closest('.error__inner'))) {
     closeMessage();
   }
 };
 
-// функция для открытия сообщения
+// Функция для открытия сообщения
 const showMessage = (template) => {
   const messageUpload = template.cloneNode(true);
   document.body.append(messageUpload);
@@ -28,7 +28,7 @@ const showMessage = (template) => {
   messageUpload.querySelector('.success__button, .error__button').addEventListener('click', closeMessage);
 };
 
-// функция для закрытия сообщения
+// Функция для закрытия сообщения
 function closeMessage () {
   const messageUpload = document.querySelector('.success') || document.querySelector('.error');
   if (messageUpload) {
