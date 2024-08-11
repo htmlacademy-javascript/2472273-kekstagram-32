@@ -24,7 +24,7 @@ const SubmitButtonText = {
 
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
-// функция для загрузки изображения
+// Функция для загрузки изображения
 const initDownloadPicture = () => {
   const file = imgUploadInput.files[0];
   const fileName = file.name.toLowerCase();
@@ -38,20 +38,20 @@ const initDownloadPicture = () => {
   }
 };
 
-// функция для закрытия окна при нажатии на кнопку
+// Функция для закрытия окна при нажатии на кнопку
 const onUploadCancel = () => {
   imgUploadCancel.addEventListener('click', () => {
     closeUploadForm();
   });
 };
 
-// Выходит ли сообщение об ошибке.
+// Выходит ли сообщение об ошибке
 const isErrorMessageOpen = () => {
   const error = document.querySelector('.error');
   return Boolean(error);
 };
 
-// функция для закрытия окна при нажатии на esc
+// Функция для закрытия окна при нажатии на esc
 const onEscKeydown = (evt) => {
   if (isEscapeKey(evt) && !isFieldsInFocus() && !isErrorMessageOpen()) {
     evt.preventDefault();
@@ -59,7 +59,7 @@ const onEscKeydown = (evt) => {
   }
 };
 
-// изменение состояния кнопки отправки
+// Изменение состояния кнопки отправки
 const blockSubmitButton = () => {
   submitButton.disabled = true;
   submitButton.textContent = SubmitButtonText.SENDING;
@@ -70,7 +70,7 @@ const unblockSubmitButton = () => {
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
-// функция для открытия окна загрузки
+// Функция для открытия окна загрузки
 const openUploadForm = () => {
   imgUploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');

@@ -6,10 +6,10 @@ import {debounce, showAlert} from '../utils.js';
 const userPostsList = document.querySelector('.pictures');
 const userPostTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-// массив для хранения картинок
+// Массив для хранения картинок
 let picturesList = [];
 
-// создание миниатюры
+// Создание миниатюры
 const сurrentUserPost = ({id, url, description, likes, comments}) => {
   const userPost = userPostTemplate.cloneNode(true);
   userPost.id = id;
@@ -20,7 +20,7 @@ const сurrentUserPost = ({id, url, description, likes, comments}) => {
   return userPost;
 };
 
-// отображение галлереи миниатюр
+// Отображение галлереи миниатюр
 const renderPicturesPreviews = (previews, container) => {
   container.querySelectorAll('.picture').forEach((element) => element.remove());
 
@@ -32,7 +32,7 @@ const renderPicturesPreviews = (previews, container) => {
   container.appendChild(postsFragment);
 };
 
-// поиск картинки по id
+// Поиск картинки по id
 const onPictureClick = (evt) => {
   if(evt.target.closest('.picture')) {
     const correctId = evt.target.closest('.picture').id;
@@ -45,7 +45,7 @@ const onPictureClick = (evt) => {
   }
 };
 
-// создание миниатюр на странице
+// Создание миниатюр на странице
 const createUserPosts = (userPosts) => {
 
   picturesList = userPosts;
@@ -53,7 +53,7 @@ const createUserPosts = (userPosts) => {
   userPostsList.addEventListener('click', onPictureClick);
 };
 
-// загрузка данных с сервера
+// Загрузка данных с сервера
 const getPicturesFromServer = async () => {
   try {
     const data = await getData();
