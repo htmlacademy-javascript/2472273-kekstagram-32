@@ -1,6 +1,6 @@
-const uploadForm = document.querySelector('.img-upload__form');
-const textHashtags = document.querySelector('.text__hashtags');
-const commentDescription = document.querySelector('.text__description');
+const uploadFormElement = document.querySelector('.img-upload__form');
+const textHashtagsElement = document.querySelector('.text__hashtags');
+const commentDescriptionElement = document.querySelector('.text__description');
 
 //Данные для валидации
 const VALID_HASHTAG = /^#[A-ZА-ЯЁa-zа-яё0-9]{1,19}$/;
@@ -14,7 +14,7 @@ const errorMessage = {
   INVALID_COMMENTS_LENGTH: `Длина комментария не может составлять больше  ${MAX_COMMENTS_LENGTH} символов.`
 };
 
-const pristine = new Pristine(uploadForm, {
+const pristine = new Pristine(uploadFormElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper--error'
@@ -38,32 +38,32 @@ const checkUniqHashtags = (value) => {
 const checkCommentsLength = (value) => value.length <= MAX_COMMENTS_LENGTH;
 
 // Проверка находятся ли поля в фокусе
-const isFieldsInFocus = () => textHashtags === document.activeElement || commentDescription === document.activeElement;
+const isFieldsInFocus = () => textHashtagsElement === document.activeElement || commentDescriptionElement === document.activeElement;
 
 pristine.addValidator(
-  textHashtags,
+  textHashtagsElement,
   checkValidHastags,
   errorMessage.INVALID__HASHTAG
 );
 
 pristine.addValidator(
-  textHashtags,
+  textHashtagsElement,
   checkHashtagsAmount,
   errorMessage.INVALID_COUNT
 );
 
 pristine.addValidator(
-  textHashtags,
+  textHashtagsElement,
   checkUniqHashtags,
   errorMessage.REPEAT_HASHTAGS
 );
 
 pristine.addValidator(
-  commentDescription,
+  commentDescriptionElement,
   checkCommentsLength,
   errorMessage.INVALID_COMMENTS_LENGTH
 );
 
-export {pristine, uploadForm, isFieldsInFocus};
+export {pristine, uploadFormElement, isFieldsInFocus};
 
 

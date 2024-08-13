@@ -1,7 +1,7 @@
 import {isEscapeKey} from '../utils';
 
-const errorMessageUpload = document.querySelector('#error').content.querySelector('.error');
-const successMessageUpload = document.querySelector('#success').content.querySelector('.success');
+const errorMessageUploadElement = document.querySelector('#error').content.querySelector('.error');
+const successMessageUploadElement = document.querySelector('#success').content.querySelector('.success');
 
 // Функция для закрытия сообщения при нажатии esc
 const onDocumentKeydown = (evt) => {
@@ -38,7 +38,7 @@ function closeMessage () {
   document.removeEventListener('click', onDocumentClick);
 }
 
-const showSuccessMessage = () => showMessage(successMessageUpload);
-const showErrorMessage = () => showMessage(errorMessageUpload);
+const showSuccessMessage = () => showMessage(successMessageUploadElement);
+const showErrorMessage = () => showMessage(errorMessageUploadElement);
 
 export {showErrorMessage, showSuccessMessage};

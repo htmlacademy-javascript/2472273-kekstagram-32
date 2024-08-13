@@ -1,5 +1,5 @@
 const ALERT_SHOW_TIME = 5000;
-const errorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
+const errorTemplateElement = document.querySelector('#data-error').content.querySelector('.data-error');
 
 // Функция для нахождения случайного числа
 const getRandomInteger = (min, max) => {
@@ -25,7 +25,7 @@ const debounce = (callback, timeoutDelay = 500) => {
 
 // Cообщения о ошибке
 const showAlert = () => {
-  const errorElement = errorTemplate.cloneNode(true);
+  const errorElement = errorTemplateElement.cloneNode(true);
   document.body.append(errorElement);
 
   setTimeout(() => {

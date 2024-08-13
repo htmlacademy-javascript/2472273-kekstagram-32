@@ -3,15 +3,15 @@ import {filterSorting} from '../filter-gallery.js';
 import {getData} from '../api.js';
 import {debounce, showAlert} from '../utils.js';
 
-const userPostsList = document.querySelector('.pictures');
-const userPostTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const userPostsListElement = document.querySelector('.pictures');
+const userPostTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
 // Массив для хранения картинок
 let picturesList = [];
 
 // Создание миниатюры
-const сurrentUserPost = ({id, url, description, likes, comments}) => {
-  const userPost = userPostTemplate.cloneNode(true);
+const getCurrentUserPost = ({id, url, description, likes, comments}) => {
+  const userPost = userPostTemplateElement.cloneNode(true);
   userPost.id = id;
   userPost.querySelector('.picture__img').src = url;
   userPost.querySelector('.picture__img').alt = description;
@@ -26,7 +26,7 @@ const renderPicturesPreviews = (previews, container) => {
 
   const postsFragment = document.createDocumentFragment();
   previews.forEach((picture) => {
-    const formedUserPost = сurrentUserPost(picture);
+    const formedUserPost = getCurrentUserPost(picture);
     postsFragment.appendChild(formedUserPost);
   });
   container.appendChild(postsFragment);
@@ -49,8 +49,8 @@ const onPictureClick = (evt) => {
 const createUserPosts = (userPosts) => {
 
   picturesList = userPosts;
-  renderPicturesPreviews(picturesList, userPostsList);
-  userPostsList.addEventListener('click', onPictureClick);
+  renderPicturesPreviews(picturesList, userPostsListElement);
+  userPostsListElement.addEventListener('click', onPictureClick);
 };
 
 // Загрузка данных с сервера
