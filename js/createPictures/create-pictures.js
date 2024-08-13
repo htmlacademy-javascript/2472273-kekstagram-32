@@ -3,15 +3,15 @@ import {filterSorting} from '../filter-gallery.js';
 import {getData} from '../api.js';
 import {debounce, showAlert} from '../utils.js';
 
-const userPostsList = document.querySelector('.pictures');
-const userPostTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const userPostsListElement = document.querySelector('.pictures');
+const userPostTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
-// массив для хранения картинок
+// Массив для хранения картинок
 let picturesList = [];
 
-// создание миниатюры
-const сurrentUserPost = ({id, url, description, likes, comments}) => {
-  const userPost = userPostTemplate.cloneNode(true);
+// Создание миниатюры
+const getCurrentUserPost = ({id, url, description, likes, comments}) => {
+  const userPost = userPostTemplateElement.cloneNode(true);
   userPost.id = id;
   userPost.querySelector('.picture__img').src = url;
   userPost.querySelector('.picture__img').alt = description;
@@ -20,19 +20,19 @@ const сurrentUserPost = ({id, url, description, likes, comments}) => {
   return userPost;
 };
 
-// отображение галлереи миниатюр
+// Отображение галлереи миниатюр
 const renderPicturesPreviews = (previews, container) => {
   container.querySelectorAll('.picture').forEach((element) => element.remove());
 
   const postsFragment = document.createDocumentFragment();
   previews.forEach((picture) => {
-    const formedUserPost = сurrentUserPost(picture);
+    const formedUserPost = getCurrentUserPost(picture);
     postsFragment.appendChild(formedUserPost);
   });
   container.appendChild(postsFragment);
 };
 
-// поиск картинки по id
+// Поиск картинки по id
 const onPictureClick = (evt) => {
   if(evt.target.closest('.picture')) {
     const correctId = evt.target.closest('.picture').id;
@@ -45,15 +45,15 @@ const onPictureClick = (evt) => {
   }
 };
 
-// создание миниатюр на странице
+// Создание миниатюр на странице
 const createUserPosts = (userPosts) => {
 
   picturesList = userPosts;
-  renderPicturesPreviews(picturesList, userPostsList);
-  userPostsList.addEventListener('click', onPictureClick);
+  renderPicturesPreviews(picturesList, userPostsListElement);
+  userPostsListElement.addEventListener('click', onPictureClick);
 };
 
-// загрузка данных с сервера
+// Загрузка данных с сервера
 const getPicturesFromServer = async () => {
   try {
     const data = await getData();

@@ -7,22 +7,22 @@ const scaleImg = {
   DEFAULT: 100
 };
 
-const scaleValue = document.querySelector('.scale__control--value');
+const scaleValueElement = document.querySelector('.scale__control--value');
 
 //Функция для изменения размера изображения
 const scalePicture = (value) => {
   imagePreviewElement.style.transform = `scale(${value / 100})`;
-  scaleValue.setAttribute('value', `${value}%`);
+  scaleValueElement.setAttribute('value', `${value}%`);
 };
 
 //Функция для кнопки уменьшения изображения
 const onScaleClickSmaller = () => {
-  scalePicture(Math.max(parseInt(scaleValue.value, 10) - scaleImg.STEP, scaleImg.MIN));
+  scalePicture(Math.max(parseInt(scaleValueElement.value, 10) - scaleImg.STEP, scaleImg.MIN));
 };
 
 //Функция для кнопки увеличения изображения
 const onScaleClickBigger = () => {
-  scalePicture(Math.min(parseInt(scaleValue.value, 10) + scaleImg.STEP, scaleImg.MAX));
+  scalePicture(Math.min(parseInt(scaleValueElement.value, 10) + scaleImg.STEP, scaleImg.MAX));
 };
 
 //Функция для сброса до первоначальных данных
